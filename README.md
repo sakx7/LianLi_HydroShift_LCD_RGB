@@ -38,7 +38,15 @@ A custom SignalRGB **plugin** focused on HydroShift RGB LEDs only.
 | HID Validation | `interface === 1` |
 | LED Mapping | `3 fans x 8 LEDs = 24 LEDs` |
 
-This project is **hardware-specific** to HydroShift protocol behavior, not a generic plugin for all Lian Li products.
+### HydroShift Variant Notes (Official Product Positioning)
+| HydroShift Variant | Status in this repo | Official variant note |
+|---|---|---|
+| `360R` | ✅ Tested | Ships with ARGB fans (officially stated) |
+| `360S` | ⚠️ Not validated yet | Ships with 3 preinstalled 28mm performance fans; unlike 360R it is not marketed as an ARGB-fan SKU (official page instead highlights compatibility with P28 side ARGB strips) |
+| `360TL` | ⚠️ Not validated yet | TL modular fan variant with ARGB lighting features |
+| `360N` | ⚠️ Not validated yet | Fanless SKU; fans must be purchased separately |
+
+This project is **hardware/protocol-specific** to HydroShift behavior and is not a generic plugin for all Lian Li products.
 
 ## 🚀 Installation
 ### 1) Preferred: Add-on URL install
@@ -72,16 +80,27 @@ Concurrent writes from both apps may cause flicker/conflicts.
 
 ## 🤝 Contributing
 Contributions are welcome, especially for:
-1. Protocol robustness across HydroShift revisions
-2. Optional telemetry/control integration paths (where supported)
-3. Diagnostics and developer tooling
+1. Compatibility validation across HydroShift variants and fan configurations
+2. Protocol robustness across HydroShift revisions
+3. Optional telemetry/control integration paths (where supported)
+4. Diagnostics and developer tooling
 
-### Contributor rules
+### Compatibility Report Checklist
+When reporting compatibility, include:
+- Exact HydroShift model (for example `360R`, `360S`, `360TL`, `360N`)
+- Color/SKU if known (black/white)
+- Whether stock fans are used or replaced
+- USB VID/PID seen in SignalRGB
+- Whether `Forced`, `Canvas`, `Paint/Depaint`, and `Shutdown` work
+- Any flicker/scintillation behavior
+- SignalRGB version + L-Connect version
+
+### Contributor Rules
 - Keep only one active plugin `.js` file in the plugin folder
 - Avoid aggressive re-init bursts inside render loops
 - Validate changes in all modes: Forced, Canvas, Paint/Depaint, Shutdown
 
-### Official SignalRGB docs
+### Official SignalRGB Docs
 - Plugin creation: https://docs.signalrgb.com/plugins/plugin-creation
 - Plugin exports: https://docs.signalrgb.com/plugins/plugin-creation/plugin-exports
 - Plugin runtime: https://docs.signalrgb.com/plugins/plugin-creation/plugin-runtime
