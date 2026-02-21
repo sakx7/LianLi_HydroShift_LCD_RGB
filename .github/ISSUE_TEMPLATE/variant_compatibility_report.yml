@@ -1,0 +1,79 @@
+name: Variant compatibility report
+description: Report compatibility results for a HydroShift variant or fan configuration
+labels: [compatibility]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing. Please provide factual results so we can map compatibility without assumptions.
+
+  - type: dropdown
+    id: hydroshift_variant
+    attributes:
+      label: HydroShift variant
+      options:
+        - 360R
+        - 360S
+        - 360TL
+        - 360N
+        - Other / unknown
+    validations:
+      required: true
+
+  - type: input
+    id: sku
+    attributes:
+      label: SKU / color (if known)
+      placeholder: HSLCD36RB (black) / HSLCD36RW (white)
+
+  - type: input
+    id: fans
+    attributes:
+      label: Fan configuration
+      description: Stock fans or custom fans
+      placeholder: Stock / custom (model)
+    validations:
+      required: true
+
+  - type: input
+    id: vid_pid
+    attributes:
+      label: USB VID/PID
+      placeholder: 0x0416:0x7399
+    validations:
+      required: true
+
+  - type: input
+    id: signalrgb_version
+    attributes:
+      label: SignalRGB version
+      placeholder: 2.4.x
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: validated_modes
+    attributes:
+      label: Validated modes
+      options:
+        - label: Forced works
+        - label: Canvas works
+        - label: Paint works
+        - label: Depaint works
+        - label: Shutdown works
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Mention flicker/scintillation issues and exact behavior
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submit checklist
+      options:
+        - label: I restarted SignalRGB before validation
+          required: true
+        - label: I reported what works and what fails
+          required: true

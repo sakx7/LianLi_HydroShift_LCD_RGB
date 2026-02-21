@@ -1,0 +1,104 @@
+name: Bug report
+description: Report a reproducible bug with the HydroShift LED plugin
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Short description of the bug
+      placeholder: Colors freeze when switching from Canvas to Forced mode.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: hydroshift_variant
+    attributes:
+      label: HydroShift variant
+      options:
+        - 360R
+        - 360S
+        - 360TL
+        - 360N
+        - Other / unknown
+    validations:
+      required: true
+
+  - type: input
+    id: vid_pid
+    attributes:
+      label: USB VID/PID
+      description: Values shown by SignalRGB for the device
+      placeholder: 0x0416:0x7399
+    validations:
+      required: true
+
+  - type: input
+    id: signalrgb_version
+    attributes:
+      label: SignalRGB version
+      placeholder: 2.4.x
+    validations:
+      required: true
+
+  - type: input
+    id: lconnect_version
+    attributes:
+      label: L-Connect version (if installed)
+      placeholder: 2.x or N/A
+
+  - type: checkboxes
+    id: modes
+    attributes:
+      label: Affected modes
+      options:
+        - label: Forced
+        - label: Canvas
+        - label: Paint
+        - label: Depaint
+        - label: Shutdown
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps only
+      placeholder: |
+        1. Open SignalRGB
+        2. Set device to Canvas
+        3. Switch to Forced and choose purple
+        4. LEDs turn off instead of applying purple
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs/screenshots
+      description: Paste key log lines or link screenshots
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submit checklist
+      options:
+        - label: I tested after restarting SignalRGB
+          required: true
+        - label: I tested with L-Connect LED sync disabled for this device
+          required: true
+        - label: I searched existing issues first
+          required: true

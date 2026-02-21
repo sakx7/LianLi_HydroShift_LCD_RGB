@@ -1,0 +1,37 @@
+name: Repo Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate plugin syntax
+        run: node --check LianLi_HydroShift_LCD_RGB.js
+
+      - name: Validate required docs
+        run: |
+          test -f README.md
+          test -f LICENSE
+          test -f CONTRIBUTING.md
+
+      - name: Block backup/runtime artifacts in tracked files
+        run: |
+          set -e
+          banned="$(git ls-files '*.bak' '*.tmp' '*.temp' '*.log')"
+          if [ -n "$banned" ]; then
+            echo "Tracked artifacts are not allowed:"
+            echo "$banned"
+            exit 1
+          fi
+
+      - name: Confirm single plugin entry file exists
+        run: |
+          test -f LianLi_HydroShift_LCD_RGB.js

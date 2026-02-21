@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SignalRGB community forum
+    url: https://forum.signalrgb.com/
+    about: Ask general SignalRGB questions or share plugin feedback.
+  - name: Official SignalRGB support
+    url: https://signalrgb.com/contact/
+    about: Contact SignalRGB support for official product/helpdesk requests.
