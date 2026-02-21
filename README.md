@@ -8,7 +8,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](#-installation)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](./LICENSE)
 
-<img src="https://lian-li.com/wp-content/uploads/2024/06/shift_002.webp" alt="Lian Li HydroShift LCD AIO" width="560" />
+<img src="assets/device/hydroshift_device_1024.png" alt="Lian Li HydroShift LCD AIO" width="560" />
 
 </div>
 
@@ -25,6 +25,11 @@ A custom SignalRGB **plugin** focused on HydroShift RGB LEDs only.
 - ✅ Coexists with **L-Connect** for LCD and cooling management
 - ✅ Lightweight single-file plugin implementation
 
+## 📸 Screenshots
+| Forced | Canvas | Paint |
+|---|---|---|
+| ![Forced mode](assets/screenshots/forced-mode.png) | ![Canvas mode](assets/screenshots/canvas-mode.png) | ![Paint mode](assets/screenshots/paint-mode.png) |
+
 ## 🔌 Compatibility
 | Item | Value |
 |---|---|
@@ -38,7 +43,7 @@ This project is **hardware-specific** to HydroShift protocol behavior, not a gen
 ## 🚀 Installation
 ### 1) Preferred: Add-on URL install
 1. Open SignalRGB: `Settings` -> `Add-ons`
-2. Click `Add Add-on` and paste this GitHub repository URL
+2. Click `Add Add-on` and paste: `https://github.com/Toufik1247/LianLi_HydroShift_LCD_RGB`
 3. Enable/install the add-on
 4. Restart SignalRGB if prompted
 5. Verify device name: `Lian Li Hydroshift LCD AIO (LED Only)`
