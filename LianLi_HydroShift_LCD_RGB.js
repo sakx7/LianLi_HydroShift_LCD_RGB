@@ -155,11 +155,11 @@ export function Name() {
 }
 
 export function VendorId() {
-	return 0x0416;
+	return 0x1CBE; // Updated for HydroShift II
 }
 
 export function ProductId() {
-	return 0x7399;
+	return 0xA021; // Updated for HydroShift II 360 Fanless
 }
 
 export function Publisher() {
