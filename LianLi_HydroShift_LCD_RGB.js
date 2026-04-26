@@ -157,6 +157,7 @@ export function Name() {
 	return "Lian Li Hydroshift LCD AIO (LED Only)";
 }
 
+
 export function VendorId() {
 	return 0x1CBE; // Updated for HydroShift II
 }
@@ -190,7 +191,8 @@ export function ImageUrl() {
 }
 
 export function Validate(endpoint) {
-	return endpoint.usagePage === 0xFF00 && endpoint.usage === 0x01;
+    // This tells SignalRGB to grab the interface that actually accepts data
+    return endpoint.maxOutputReportByteLength > 0;
 }
 
 export function ConflictingProcesses() {
