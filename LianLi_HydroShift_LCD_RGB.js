@@ -103,10 +103,7 @@ class HydroShiftLedProtocol {
 		return anySuccess;
 	}
 
-initializeLedOnly() {
-		// HydroShift II specific initialization
-		this.sendSmallPacket(0x80, [0x01]); // Force Software Mode
-		
+	initializeLedOnly() {
 		const initOk = this.sendSmallCompat(
 			this.buildInitPayloadVariantA(),
 			this.buildInitPayloadVariantB(),
@@ -157,7 +154,6 @@ export function Name() {
 	return "Lian Li Hydroshift LCD AIO (LED Only)";
 }
 
-
 export function VendorId() {
 	return 0x1CBE; // Updated for HydroShift II
 }
@@ -191,12 +187,20 @@ export function ImageUrl() {
 }
 
 export function Validate(endpoint) {
-    // This tells SignalRGB to grab the interface that actually accepts data
-    return endpoint.maxOutputReportByteLength > 0;
+	// HydroShift II (VID 0x1CBE) exposes lighting on Interface 0.
+	// Interface 1 is kept as a fallback for any firmware variant that differs.
+	return endpoint.interface === 0 || endpoint.interface === 1;
 }
 
 export function ConflictingProcesses() {
-	return [];
+	// L-Connect 3 services hold an exclusive HID lock on the device.
+	// SignalRGB must detect and warn when these are running so the user
+	// can stop them before lighting control is attempted.
+	return [
+		"LLService.exe",
+		"LConnect3.exe",
+		"LianLiService.exe",
+	];
 }
 
 /* global
