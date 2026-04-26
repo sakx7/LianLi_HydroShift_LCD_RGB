@@ -187,7 +187,7 @@ export function ImageUrl() {
 }
 
 export function Validate(endpoint) {
-	return endpoint.interface === 1;
+	return endpoint.interface === 0; /* Update the Validate Function */
 }
 
 export function ConflictingProcesses() {
