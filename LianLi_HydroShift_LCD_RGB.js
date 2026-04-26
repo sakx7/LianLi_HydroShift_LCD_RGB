@@ -103,7 +103,10 @@ class HydroShiftLedProtocol {
 		return anySuccess;
 	}
 
-	initializeLedOnly() {
+initializeLedOnly() {
+		// HydroShift II specific initialization
+		this.sendSmallPacket(0x80, [0x01]); // Force Software Mode
+		
 		const initOk = this.sendSmallCompat(
 			this.buildInitPayloadVariantA(),
 			this.buildInitPayloadVariantB(),
