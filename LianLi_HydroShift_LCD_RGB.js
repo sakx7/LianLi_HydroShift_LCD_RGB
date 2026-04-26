@@ -190,7 +190,7 @@ export function ImageUrl() {
 }
 
 export function Validate(endpoint) {
-    return true; 
+	return endpoint.usagePage === 0xFF00 && endpoint.usage === 0x01;
 }
 
 export function ConflictingProcesses() {
