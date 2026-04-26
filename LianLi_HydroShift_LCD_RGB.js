@@ -189,7 +189,7 @@ export function ImageUrl() {
 export function Validate(endpoint) {
 	// HydroShift II (VID 0x1CBE) exposes lighting on Interface 0.
 	// Interface 1 is kept as a fallback for any firmware variant that differs.
-	return endpoint.interface === 0 || endpoint.interface === 1;
+	return true;
 }
 
 export function ConflictingProcesses() {
